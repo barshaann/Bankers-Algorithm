@@ -115,7 +115,7 @@ function calculateSafeSequence() {
                     for (let k = 0; k < r; k++) {
                         work[k] += alloc[i][k];
                     }
-                    safeSeq.push(i);
+                    safeSeq.push(`p${i}`);  // Use p1, p2, etc.
                     output.innerHTML += `<div class="process-step">Process ${i} added to safe sequence.</div>`;
                     finish[i] = true;
                     found = true;
@@ -129,8 +129,10 @@ function calculateSafeSequence() {
         }
     }
 
-    output.innerHTML += `<p>The system is in a safe state. Safe sequence is: ${safeSeq.join(" ")}</p>`;
+    // Update safe sequence format with '>'
+    output.innerHTML += `<p>The system is in a safe state. Safe sequence is: ${safeSeq.join(" > ")}</p>`;
 }
+
 
 function exportSafeSequence() {
     const numProcesses = document.getElementById("numProcesses").value;
